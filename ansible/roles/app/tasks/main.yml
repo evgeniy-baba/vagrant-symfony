@@ -1,0 +1,10 @@
+---
+- name:     Install Composer dependens
+  command: /usr/bin/composer install -o --no-interaction --working-dir={{ app_root }}
+
+- name:     Drop mysql tables
+  command:  /var/www/app/console doctrine:schema:drop --force --no-interaction
+
+- name:     Install mysql tables
+  command:  /var/www/app/console doctrine:schema:create --no-interaction
+

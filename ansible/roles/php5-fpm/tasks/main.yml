@@ -1,0 +1,9 @@
+---
+- name: Install PHP5-FPM
+  sudo: yes
+  apt:  package=php5-fpm state=latest
+
+- name: Configure PHP-FPM configuration
+  sudo: yes
+  template: src=www.tpl dest=/etc/php5/fpm/pool.d/www.conf
+  notify: restart php5-fpm
